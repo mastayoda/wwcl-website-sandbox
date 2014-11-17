@@ -41,7 +41,7 @@ function socketIOConnect() {
     var sysInfo = dumpSystemInfo();
 
     /* Join World Wide Cluster */
-    socket = io.connect(document.URL, {
+    socket = io.connect("https://wwcl-server-mastayoda1.c9.io", {
         query: 'isClient=' + false + '&' + 'sysInfo=' + JSON.stringify(sysInfo)
     });
 
