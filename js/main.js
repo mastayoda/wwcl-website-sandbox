@@ -6,7 +6,7 @@ $(document).ready(function() {
     window.socket = null;
     window.seqFlops = calculateGigaFlopsSequential();
     window.parFlops = 0;
-    window.RTT = "TEST";
+    window.RTT = "temp";
 
     /* Workers are available, proceed */
     if (areWebWorkersSupported()) {
@@ -279,21 +279,18 @@ function getOS() {
 }
 
 function getClientIP() {
+    
+    return "0.0.0.0";
 
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
-    xmlhttp.open("GET", "http://api.hostip.info/get_html.php", false);
+    xmlhttp.open("GET", "http://ip-api.com/json", false);
     xmlhttp.send();
 
     hostipInfo = xmlhttp.responseText.split("\n");
 
-    for (i = 0; hostipInfo.length >= i; i++) {
-        ipAddress = hostipInfo[i].split(":");
-        if (ipAddress[0] == "IP") return ipAddress[1];
-    }
-
-    return false;
+    return JSON.parse(hostipInfo[0]).query;
 }
 
 function getBrowserInfo() {
