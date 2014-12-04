@@ -280,7 +280,6 @@ function getOS() {
 
 function getClientIP() {
     
-    return "0.0.0.0";
 
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
